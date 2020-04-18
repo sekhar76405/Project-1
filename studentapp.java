@@ -1,35 +1,117 @@
 
+import java.util.Scanner;
+
+
+
+
 public class studentapp {
-	public class student {
+
+
+	public static void main(String[] args) 
+	{
+	    int i=0;
+		Scanner scan = new Scanner(System.in);
+		//using do while loop so that the will be atleast 1 student input before the while(1) executes!
+		do{  
+		    //using int i with if else cases to avoid every time execution of input of student data. 
+		    if(i==0)
+		    {
+		        // Ask how many users do you want to add
+		        System.out.println("Enter the number of students you want to add: ");
+                int n = scan.nextInt();
+                
+                //creating array of objects of class students(ideally creating students)
+                student obj[] = new student[n];
+                
+                // a simple loop to flow through the array of objects
+                for(int a=0;a<n;a++)
+                {
+                    System.out.println("Enter details for student \n ");
+                    obj[a].details();
+                    obj[a].Course();
+                    // as the methods increase they can be added here like ID,balance etc.
+                }
+                
+		    }
+		    else
+		    {
+		        System.out.println("Enter 1 to add a new student's details \n 2 to view a student's details");
+		        int s = scan.nextInt();
+		        
+		        //using switch cases for user convinience.
+		        switch(s)
+		        {
+		            case 1:
+		                {
+		                    System.out.println("Enter the number of students you want to add: ");
+                            int num_std = scan.nextInt();
+                            
+                            int tot = num_std + n;//total students are now num_std + n(initial)
+                            
+                            student obj[] = new student[tot];//added new students to the array 
+                            
+                            for(int j=n;j<tot;j++)
+                            {
+                                System.out.println("Enter details for student \n ");
+                                obj[j].details();
+                                obj[j].Course();
+                                // as the methods increase they can be added here like ID,balance etc.
+                            }
+                            
+		                }break;
+		                
+		            case 2:
+		                {
+		                    //to view all details but can only be executed once Id are generated.
+		                }break;
+		                
+		            default: System.out.println("Invalid input");
+		        }
+		        System.out.println("Enter Y if You are new user");
+                student obj = new student();
+		    }
+            
+    		// create n number of new students
+    		
+		i++;
+		}while(i>0);
+	}
+}
+class student
+{
 		private String firstname;
 		private String lastname;
 		private String year;
 		private int StudentID;
 		private String courses;
 		private String tutionbalance;
-		private int costofcopurse = 10000;
-
+		private int costofcourse = 10000;
+        Scanner scan = new Scanner(System.in);
 		// DCN , OOPS, SEPM, Advance Linux and BRM are the subjects. Each costs 10,000
 		// Rs
-
+        
 		// Constructor: prompts user to enter student name and year
-
+        void details()
+        {
+            System.out.println("Enter the student's firstname: ");
+            firstname = scan.nextLine();
+            System.out.println("Enter the student's lastname: ");
+            lastname = scan.nextLine();
+            System.out.println("Enter the Year of study: ");
+            year = scan.nextLine();
+        }
 		// Generate an ID
 
 		// enroll into courses
-
+        void Course()
+        {
+             System.out.println("Enter the course enrolled: ");
+             courses = scan.nextLine();
+        }
 		// view balance
 
 		// Pay tuition fees
 
 		// show status
-	}
-
-	public static void main(String[] args) {
-		// Ask how many users do you want to add
-
-		// create n number of new students
-
-	}
 }
 
