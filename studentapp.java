@@ -11,11 +11,7 @@ public class studentapp {
 	{
 	    int i=0;
 		Scanner scan = new Scanner(System.in);
-		//using do while loop so that the will be atleast 1 student input before the while(1) executes!
-		do{  
-		    //using int i with if else cases to avoid every time execution of input of student data. 
-		    if(i==0)
-		    {
+		
 		        // Ask how many users do you want to add
 		        System.out.println("Enter the number of students you want to add: ");
                 int n = scan.nextInt();
@@ -23,6 +19,10 @@ public class studentapp {
                 //creating array of objects of class students(ideally creating students)
                 student obj[] = new student[n];
                 
+                for(int x=0;x<n;x++)
+                {
+                    obj[x] = new student();
+                }
                 // a simple loop to flow through the array of objects
                 for(int a=0;a<n;a++)
                 {
@@ -32,8 +32,8 @@ public class studentapp {
                     // as the methods increase they can be added here like ID,balance etc.
                 }
                 
-		    }
-		    else
+		    
+		    while(true)
 		    {
 		        System.out.println("Enter 1 to add a new student's details \n 2 to view a student's details");
 		        int s = scan.nextInt();
@@ -48,7 +48,13 @@ public class studentapp {
                             
                             int tot = num_std + n;//total students are now num_std + n(initial)
                             
-                            student obj[] = new student[tot];//added new students to the array 
+                            // student obj[] = new student[tot];//added new students to the array 
+                            
+                            
+                            for(int x=n;x<tot;x++)
+                            {
+                                obj[x] = new student();
+                            }
                             
                             for(int j=n;j<tot;j++)
                             {
@@ -67,18 +73,15 @@ public class studentapp {
 		                
 		            default: System.out.println("Invalid input");
 		        }
-		        System.out.println("Enter Y if You are new user");
-                student obj = new student();
+		       
 		    }
             
     		// create n number of new students
     		
-		i++;
-		}while(i>0);
+	  
 	}
 }
-class student
-{
+class student {
 		private String firstname;
 		private String lastname;
 		private String year;
@@ -113,5 +116,5 @@ class student
 		// Pay tuition fees
 
 		// show status
-}
+	}
 
